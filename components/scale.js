@@ -3,27 +3,26 @@ import { parse } from "../lib/object"
 import { mouseRay } from "../lib/raycaster"
 import { setMaterial } from '../lib/setMaterial'
 import { objectContains } from '../lib/objectContains'
-
 export { scale }
 import { getColor } from '../lib/colors'
 import { Object } from '../lib/objects'
+
 function scale(canvas, camera, renderer, position, callback, endCallback) {
     const size = new THREE.Vector3(1, 1, 1)
 
     let active = false
     const pivotScene = new THREE.Scene()
     const material1 = new THREE.MeshBasicMaterial({ color: getColor("color1") })
-    const material5 = new THREE.MeshBasicMaterial({ color: getColor("color4") })
     const material2 = new THREE.MeshBasicMaterial({ color: getColor("color2") })
     const material3 = new THREE.MeshBasicMaterial({ color: getColor("color3") })
+    const material4 = new THREE.MeshBasicMaterial({ color: getColor("color4") })
+    const materialHover = new THREE.MeshBasicMaterial({ color: getColor("hover") })
 
-    const material4 = new THREE.MeshBasicMaterial({ color: getColor("hover") })
 
 
     const x = parse(Object("scale_helper"))
+    x.children[0].geometry.scale(0.5, 0.5, 1)
     const all = parse(Object("scale_all_helper"))
-
-    all.children[0].geometry.scale(1.3, 1.3, 1.3)
 
     const y = x.clone()
     const z = x.clone()
@@ -62,7 +61,7 @@ function scale(canvas, camera, renderer, position, callback, endCallback) {
         setMaterial(xz, material1)
         setMaterial(xy, material2)
         setMaterial(yz, material3)
-        setMaterial(all, material5)
+        setMaterial(all, material4)
         canvas.style.cursor = "default"
 
     }
@@ -206,45 +205,45 @@ function scale(canvas, camera, renderer, position, callback, endCallback) {
                 if (objectContains(x, ray.intersect.object)) {
                     selected = x
                     selectedAxis = "x"
-                    setMaterial(ray.intersect.object, material4)
+                    setMaterial(ray.intersect.object, materialHover)
                     canvas.style.cursor = "grab"
 
                 }
                 if (objectContains(y, ray.intersect.object)) {
                     selected = y
                     selectedAxis = "y"
-                    setMaterial(ray.intersect.object, material4)
+                    setMaterial(ray.intersect.object, materialHover)
                     canvas.style.cursor = "grab"
 
                 }
                 if (objectContains(z, ray.intersect.object)) {
                     selected = z
                     selectedAxis = "z"
-                    setMaterial(ray.intersect.object, material4)
+                    setMaterial(ray.intersect.object, materialHover)
                     canvas.style.cursor = "grab"
                 }
                 if (objectContains(xz, ray.intersect.object)) {
                     selected = xz
                     selectedAxis = "xz"
-                    setMaterial(ray.intersect.object, material4)
+                    setMaterial(ray.intersect.object, materialHover)
                     canvas.style.cursor = "grab"
                 }
                 if (objectContains(xy, ray.intersect.object)) {
                     selected = xy
                     selectedAxis = "xy"
-                    setMaterial(ray.intersect.object, material4)
+                    setMaterial(ray.intersect.object, materialHover)
                     canvas.style.cursor = "grab"
                 }
                 if (objectContains(yz, ray.intersect.object)) {
                     selected = yz
                     selectedAxis = "yz"
-                    setMaterial(ray.intersect.object, material4)
+                    setMaterial(ray.intersect.object, materialHover)
                     canvas.style.cursor = "grab"
                 }
                 if (objectContains(all, ray.intersect.object)) {
                     selected = all
                     selectedAxis = "xyz"
-                    setMaterial(ray.intersect.object, material4)
+                    setMaterial(ray.intersect.object, materialHover)
                     canvas.style.cursor = "grab"
                 }
             }

@@ -4,10 +4,8 @@ import { mouseRay } from "../lib/raycaster"
 import { angleBetweenPoints } from '../lib/angleBetweenPoints'
 import { setMaterial } from '../lib/setMaterial'
 import { objectContains } from '../lib/objectContains'
-
 export { rotate }
 import { getColor } from '../lib/colors'
-
 import { Object } from '../lib/objects'
 
 function rotate(canvas, camera, renderer, position, callback, endCallback) {
@@ -18,8 +16,7 @@ function rotate(canvas, camera, renderer, position, callback, endCallback) {
     const material1 = new THREE.MeshBasicMaterial({ color: getColor("color1"), polygonOffset: true, polygonOffsetFactor: 1 })
     const material2 = new THREE.MeshBasicMaterial({ color: getColor("color2"), polygonOffset: true, polygonOffsetFactor: 2 })
     const material3 = new THREE.MeshBasicMaterial({ color: getColor("color3"), polygonOffset: true, polygonOffsetFactor: 3 })
-
-    const material4 = new THREE.MeshBasicMaterial({ color: getColor("hover") })
+    const materialHover = new THREE.MeshBasicMaterial({ color: getColor("hover") })
 
 
     const xz = parse(Object("rotate_helper"))
@@ -146,17 +143,17 @@ function rotate(canvas, camera, renderer, position, callback, endCallback) {
                 isHover = true
                 if (objectContains(xz, ray.intersect.object)) {
                     selectedAxis = "xz"
-                    setMaterial(ray.intersect.object, material4)
+                    setMaterial(ray.intersect.object, materialHover)
                     canvas.style.cursor = "grab"
                 }
                 if (objectContains(xy, ray.intersect.object)) {
                     selectedAxis = "xy"
-                    setMaterial(ray.intersect.object, material4)
+                    setMaterial(ray.intersect.object, materialHover)
                     canvas.style.cursor = "grab"
                 }
                 if (objectContains(yz, ray.intersect.object)) {
                     selectedAxis = "yz"
-                    setMaterial(ray.intersect.object, material4)
+                    setMaterial(ray.intersect.object, materialHover)
                     canvas.style.cursor = "grab"
                 }
             }

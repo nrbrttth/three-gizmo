@@ -5,7 +5,6 @@ export { move }
 import { setMaterial } from '../lib/setMaterial'
 import { objectContains } from '../lib/objectContains'
 import { getColor } from '../lib/colors'
-
 import { Object } from '../lib/objects'
 
 function move(canvas, camera, renderer, position, callback, endCallback) {
@@ -14,10 +13,10 @@ function move(canvas, camera, renderer, position, callback, endCallback) {
     const material1 = new THREE.MeshBasicMaterial({ color: getColor("color1") })
     const material2 = new THREE.MeshBasicMaterial({ color: getColor("color2") })
     const material3 = new THREE.MeshBasicMaterial({ color: getColor("color3") })
-
-    const material4 = new THREE.MeshBasicMaterial({ color: getColor("hover") })
+    const materialHover = new THREE.MeshBasicMaterial({ color: getColor("hover") })
 
     const x = parse(Object("move_helper"))
+    x.children[0].geometry.scale(0.5, 0.5, 1)
 
     const y = x.clone()
     const z = x.clone()
@@ -148,39 +147,39 @@ function move(canvas, camera, renderer, position, callback, endCallback) {
                 if (objectContains(x, ray.intersect.object)) {
                     selected = x
                     selectedAxis = "x"
-                    setMaterial(ray.intersect.object, material4)
+                    setMaterial(ray.intersect.object, materialHover)
                     canvas.style.cursor = "grab"
 
                 }
                 if (objectContains(y, ray.intersect.object)) {
                     selected = y
                     selectedAxis = "y"
-                    setMaterial(ray.intersect.object, material4)
+                    setMaterial(ray.intersect.object, materialHover)
                     canvas.style.cursor = "grab"
 
                 }
                 if (objectContains(z, ray.intersect.object)) {
                     selected = z
                     selectedAxis = "z"
-                    setMaterial(ray.intersect.object, material4)
+                    setMaterial(ray.intersect.object, materialHover)
                     canvas.style.cursor = "grab"
                 }
                 if (objectContains(xz, ray.intersect.object)) {
                     selected = xz
                     selectedAxis = "xz"
-                    setMaterial(ray.intersect.object, material4)
+                    setMaterial(ray.intersect.object, materialHover)
                     canvas.style.cursor = "grab"
                 }
                 if (objectContains(xy, ray.intersect.object)) {
                     selected = xy
                     selectedAxis = "xy"
-                    setMaterial(ray.intersect.object, material4)
+                    setMaterial(ray.intersect.object, materialHover)
                     canvas.style.cursor = "grab"
                 }
                 if (objectContains(yz, ray.intersect.object)) {
                     selected = yz
                     selectedAxis = "yz"
-                    setMaterial(ray.intersect.object, material4)
+                    setMaterial(ray.intersect.object, materialHover)
                     canvas.style.cursor = "grab"
                 }
             }
