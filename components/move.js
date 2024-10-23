@@ -10,6 +10,7 @@ import { Object } from '../lib/objects'
 function move(canvas, camera, renderer, position, callback, endCallback) {
     let active = false
     const pivotScene = new THREE.Scene()
+    pivotScene.name = "gizmo"
     const material1 = new THREE.MeshBasicMaterial({ color: getColor("color1") })
     const material2 = new THREE.MeshBasicMaterial({ color: getColor("color2") })
     const material3 = new THREE.MeshBasicMaterial({ color: getColor("color3") })

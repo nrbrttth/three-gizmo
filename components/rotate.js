@@ -13,6 +13,7 @@ function rotate(canvas, camera, renderer, position, callback, endCallback) {
 
     let active = false
     const pivotScene = new THREE.Scene()
+    pivotScene.name = "gizmo"
     const material1 = new THREE.MeshBasicMaterial({ color: getColor("color1"), polygonOffset: true, polygonOffsetFactor: 1 })
     const material2 = new THREE.MeshBasicMaterial({ color: getColor("color2"), polygonOffset: true, polygonOffsetFactor: 2 })
     const material3 = new THREE.MeshBasicMaterial({ color: getColor("color3"), polygonOffset: true, polygonOffsetFactor: 3 })
